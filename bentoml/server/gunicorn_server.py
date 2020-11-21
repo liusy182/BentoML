@@ -57,6 +57,7 @@ class GunicornBentoServer(Application):  # pylint: disable=abstract-method
     """
 
     def __init__(
+<<<<<<< Updated upstream
         self,
         bundle_path,
         port=None,
@@ -64,6 +65,10 @@ class GunicornBentoServer(Application):  # pylint: disable=abstract-method
         timeout=None,
         prometheus_lock=None,
         enable_swagger=True,
+=======
+        self, bundle_path, port=None, workers=None, timeout=None, 
+        prometheus_lock=None, enable_swagger=True,
+>>>>>>> Stashed changes
     ):
         self.bento_service_bundle_path = bundle_path
 
@@ -98,7 +103,11 @@ class GunicornBentoServer(Application):  # pylint: disable=abstract-method
             self.cfg.set(key.lower(), value)
 
     def load(self):
+<<<<<<< Updated upstream
         bento_service = load_from_dir(self.bento_service_bundle_path)
+=======
+        bento_service = load(self.bento_service_bundle_path)
+>>>>>>> Stashed changes
         api_server = GunicornBentoAPIServer(
             bento_service, port=self.port, enable_swagger=self.enable_swagger
         )

@@ -162,6 +162,7 @@ def create_bento_service_cli(pip_installed_bundle_path=None):
         envvar='BENTOML_ENABLE_NGROK',
     )
     @click.option(
+<<<<<<< Updated upstream
         '--yatai-url',
         type=click.STRING,
         help='Remote YataiService URL. Optional. '
@@ -185,6 +186,19 @@ def create_bento_service_cli(pip_installed_bundle_path=None):
         saved_bundle_path = resolve_bundle_path(
             bento, pip_installed_bundle_path, yatai_url
         )
+=======
+        '--enable-swagger/--disable-swagger',
+        is_flag=True,
+        default=True,
+        help="Run API server with Swagger client enabled",
+        envvar='BENTOML_ENABLE_SWAGGER',
+    )
+    def serve(
+        port, bento=None, enable_microbatch=False, run_with_ngrok=False, 
+        enable_swagger=True
+    ):
+        saved_bundle_path = resolve_bundle_path(bento, pip_installed_bundle_path)
+>>>>>>> Stashed changes
         start_dev_server(
             saved_bundle_path, port, enable_microbatch, run_with_ngrok, enable_swagger
         )
@@ -228,6 +242,7 @@ def create_bento_service_cli(pip_installed_bundle_path=None):
         envvar='BENTOML_MICROBATCH_WORKERS',
     )
     @click.option(
+<<<<<<< Updated upstream
         '--yatai-url',
         type=click.STRING,
         help='Remote YataiService URL. Optional. '
@@ -238,6 +253,12 @@ def create_bento_service_cli(pip_installed_bundle_path=None):
         is_flag=True,
         default=True,
         help="Run API server with Swagger UI enabled",
+=======
+        '--enable-swagger/--disable-swagger',
+        is_flag=True,
+        default=True,
+        help="Run API server with Swagger client enabled",
+>>>>>>> Stashed changes
         envvar='BENTOML_ENABLE_SWAGGER',
     )
     def serve_gunicorn(
@@ -247,7 +268,10 @@ def create_bento_service_cli(pip_installed_bundle_path=None):
         bento=None,
         enable_microbatch=False,
         microbatch_workers=1,
+<<<<<<< Updated upstream
         yatai_url=None,
+=======
+>>>>>>> Stashed changes
         enable_swagger=True,
     ):
         if not psutil.POSIX:

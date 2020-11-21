@@ -43,11 +43,16 @@ def async_trace(*args, **kwargs):
 
 
 def start_dev_server(
+<<<<<<< Updated upstream
     saved_bundle_path: str,
     port: int,
     enable_microbatch: bool,
     run_with_ngrok: bool,
     enable_swagger: bool,
+=======
+    saved_bundle_path: str, port: int, enable_microbatch: bool, 
+    run_with_ngrok: bool, enable_swagger: bool,
+>>>>>>> Stashed changes
 ):
     logger.info("Starting BentoML API server in development mode..")
 
@@ -82,9 +87,13 @@ def start_dev_server(
         marshal_server.async_start(port=port)
         api_server.start()
     else:
+<<<<<<< Updated upstream
         api_server = BentoAPIServer(
             bento_service, port=port, enable_swagger=enable_swagger
         )
+=======
+        api_server = BentoAPIServer(bento_service, port=port, enable_swagger=enable_swagger)
+>>>>>>> Stashed changes
         api_server.start()
 
 
@@ -129,17 +138,26 @@ def start_prod_server(
             )
 
             gunicorn_app = GunicornBentoServer(
+<<<<<<< Updated upstream
                 saved_bundle_path,
                 api_server_port,
                 workers,
                 timeout,
                 prometheus_lock,
                 enable_swagger,
+=======
+                saved_bundle_path, api_server_port, workers, timeout, 
+                prometheus_lock, enable_swagger,
+>>>>>>> Stashed changes
             )
         marshal_server.async_run()
         gunicorn_app.run()
     else:
         gunicorn_app = GunicornBentoServer(
+<<<<<<< Updated upstream
             saved_bundle_path, port, workers, timeout, enable_swagger=enable_swagger
         )
+=======
+            saved_bundle_path, port, workers, timeout, enable_swagger=enable_swagger)
+>>>>>>> Stashed changes
         gunicorn_app.run()

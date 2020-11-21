@@ -94,6 +94,7 @@ class BentoAPIServer:
     DEFAULT_PORT = config("apiserver").getint("default_port")
     _MARSHAL_FLAG = config("marshal_server").get("marshal_request_header_flag")
 
+<<<<<<< Updated upstream
     def __init__(
         self,
         bento_service: BentoService,
@@ -101,6 +102,9 @@ class BentoAPIServer:
         app_name=None,
         enable_swagger=True,
     ):
+=======
+    def __init__(self, bento_service: BentoService, port=DEFAULT_PORT, app_name=None, enable_swagger=True):
+>>>>>>> Stashed changes
         app_name = bento_service.name if app_name is None else app_name
 
         self.port = port
@@ -160,6 +164,7 @@ class BentoAPIServer:
             status=200,
             mimetype="text/html",
         )
+        
 
     @staticmethod
     def swagger_static(static_path, filename):
